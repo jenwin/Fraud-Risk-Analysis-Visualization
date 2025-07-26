@@ -28,10 +28,11 @@ Understanding the factors behind fraudulent transactions allows financial instit
 ## Approach
 
 ### Tools & Technologies Used
+- **Excel** – For data cleaning and validation.
 
 ### Data Cleaning and Validation
 
-**1. Rename Columns**
+1. **Rename Columns**
 
 | Original Column      | New Column                      |
 |----------------------|---------------------------------|
@@ -47,7 +48,7 @@ Understanding the factors behind fraudulent transactions allows financial instit
 | `isFraud`            | Is Fraudulent                   |
 | `isFlaggedFraud`     | Was Flagged Fraudulent          |
 
-**2. Add Day Column**
+2. **Add Day Column**
 
 | Column      | Conversion (Hour to Day) | Purpose                         |
 |-------------|--------------------------|---------------------------------|
