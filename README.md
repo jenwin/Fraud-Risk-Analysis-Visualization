@@ -91,9 +91,57 @@ These columns only identify user accounts and don’t provide useful information
    - `Is Fraudulent`
    - `Was Flagged Fraudulent`
 
-10. **Removing Underscores in Transaction Types**
+10. **Removed Underscores in Transaction Types**
 
 | Transaction Type Column    | New Transaction Type Column |
 |----------------------------|-----------------------------|
 | CASH_OUT                   | CASH OUT                    |
 | CASH_IN                    | CASH IN                     |
+
+## Results
+- `TRANSFER` transaction type had the highest amount of fraud — $681,598,379.85 million.
+- `CASH OUT` transaction type was the next runner-up — $680,383,860.58 million.
+- `CASH IN`, `PAYMENT`, and `DEBT` had zero fraud.
+- Fraud Rate per Transaction Type / Total Transaction Count:
+  - `TRANSFER`: 0.0006
+  - `CASH OUT`: 0.0005
+  - Total Fraud Occurrence: 0.0011
+- Fraud rate by count is less than 1%, but the fraud amounts are large. 
+- Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
+- Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
+
+## Key Business Insights
+- Fraud is highly targeted. Fraud only occurred in `TRANSFER` and `CASH OUT` transaction types.
+- Since `TRANSFER` and `CASH OUT` contain fraudulent activity, they may occur together in fraudulent schemes.
+- `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
+- Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
+ 
+- `CASH IN`, `PAYMENT`, and `DEBT` had zero fraudulent transactions, but this could translate to false positives. 
+
+## Summary of Recommendations Based on Findings
+
+**Fraud Surveillance Across Transaction Types**
+- Focus fraud detection on `TRANSFER` and `CASH OUT` transaction types.
+- Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBT` transaction types.
+  
+**Enhance Real-Time Rules for Suspicious Behavior/Patterns**
+  - Implement flags across scenarios: 
+    - When funds are transferred and cashed out immediately.
+    - Large values over $50,000 should be flagged.
+
+**Observe Event Timing and Frequency**
+  - Limit the number of transfers and cash outs per account within a day or hourly to detect unusual activity.
+  - Lock accounts when time-based bursts are detected.
+  - Utilize dashboards to monitor hourly fluctuations in transaction activities for both fraudulent and non-fraudulent transactions.
+  - A sudden rise in fraud amounts can be an early sign of a new scam starting.
+
+**Monitor Account Balance Changes**
+  - Watch for patterns where funds are transferred from empty accounts.
+  - Watch for accounts that are quickly depleted right after receiving money.
+
+**Add Behavioral Modeling**
+   - Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
+   - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
+
+## Author
+Jennifer Nguyen
