@@ -141,5 +141,9 @@ These columns only identify user accounts and don’t provide useful information
    - Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
    - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
 
+## How to Start Project with Python
+1. Clone or Download.
+2. Run  `python model.py` from the root directory.
+
 ## Author
 Jennifer Nguyen
