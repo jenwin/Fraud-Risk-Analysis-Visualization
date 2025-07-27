@@ -108,7 +108,7 @@ These columns only identify user accounts and don’t provide useful information
   - `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
   - Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
  
-**Cash In, Payment, Debt transaction Types**
+**Cash In, Payment, Debt Transaction Types**
   - `CASH IN`, `PAYMENT`, and `DEBT` had zero fraudulent transactions, but this could translate to false positives. 
 
 **Time-Based (Hourly) Fraudulent Activity**
