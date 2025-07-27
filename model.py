@@ -30,3 +30,19 @@ true_negatives = df[(df['Is Fraudulent'] == 0) & (df['Was Flagged Fraudulent'] =
 # Calculate rates
 flagging_rate = (flagged_transactions / total_transactions) * 100 if total_transactions else 0
 detection_rate = (true_positives / actual_frauds) * 100 if actual_frauds else 0
+
+# Print the summary
+print("Fraud Flagging Performance Summary:")
+print(f"Total Transactions: {total_transactions}")
+print(f"Actual Fraudulent Transactions: {actual_frauds}")
+print(f"Flagged Transactions: {flagged_transactions}")
+print(f"Correctly Flagged Frauds (True Positives): {true_positives}")
+print(f"Overall Flagging Rate (% of all transactions): {flagging_rate:.2f}")
+print(f"Fraud Detection Rate (% of actual frauds caught): {detection_rate:.2f}")
+
+# Print confusion matrix components
+print("\nConfusion Matrix Components:")
+print(f"True Positives (TP): {true_positives}")
+print(f"False Positives (FP): {false_positives}")
+print(f"False Negatives (FN): {false_negatives}")
+print(f"True Negatives (TN): {true_negatives}")
