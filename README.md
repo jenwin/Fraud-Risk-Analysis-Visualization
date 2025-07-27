@@ -29,6 +29,8 @@ Understanding the factors behind fraudulent transactions allows financial instit
 
 ### Tools & Technologies Used
 - **Excel** – For data cleaning and validation.
+- **Power BI** - For data cleaning and validation. Data visualization and dashboard creation.
+- **Python** - Used to develop and evaluate the fraud detection process and system.
 
 ### Data Cleaning and Validation
 
