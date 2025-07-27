@@ -26,3 +26,7 @@ false_positives = df[(df['Is Fraudulent'] == 0) & (df['Was Flagged Fraudulent'] 
 false_negatives = df[(df['Is Fraudulent'] == 1) & (df['Was Flagged Fraudulent'] == 0)].shape[0]
 # True Negatives (TN): Not fraud and NOT flagged
 true_negatives = df[(df['Is Fraudulent'] == 0) & (df['Was Flagged Fraudulent'] == 0)].shape[0]
+
+# Calculate rates
+flagging_rate = (flagged_transactions / total_transactions) * 100 if total_transactions else 0
+detection_rate = (true_positives / actual_frauds) * 100 if actual_frauds else 0
