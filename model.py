@@ -5,3 +5,6 @@ dataset_url = "https://raw.githubusercontent.com/jenwin/Financial_Data/refs/head
 
 # Load data
 df = pd.read_csv(dataset_url)
+
+# Clean column names
+df.columns = df.columns.str.strip()
