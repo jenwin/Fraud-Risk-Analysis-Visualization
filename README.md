@@ -48,40 +48,33 @@ Understanding the factors behind fraudulent transactions allows financial instit
 | `isFraud`            | Is Fraudulent                   |
 | `isFlaggedFraud`     | Was Flagged Fraudulent          |
 
-2. **Add Day Column**
+2. Checked for blanks: None found.
 
-| Column             | Conversion (Hour to Day) | Purpose                         |
-|--------------------|--------------------------|---------------------------------|
-| `Time Step (Hour)` | Time in hours (1,2,3,4)  | Shows data by hour              |
-| `Day` (new)        | Time in days (1,2,3,4)   | Groups data into full days      |
+3. Checked that all values in the Transaction Type column are in uppercase.
 
-3. Checked for blanks: None found.
-
-4. Checked that all values in the Transaction Type column are in uppercase.
-
-5. Dropped columns: 
+4. Dropped columns: 
    - `Origin Account`
    - `Destination Account`
   
 These columns only identify user accounts and don’t provide useful information for detecting fraud.
 
-6. Checked for any negative and zero values in `Amount` column.
+5. Checked for any negative and zero values in `Amount` column.
 
-7. Add `Fraudulent Status` column: From `Is Fraudulent`, convert `0` to `No` and `1` to `Yes`.
+6. Add `Fraudulent Status` column: From `Is Fraudulent`, convert `0` to `No` and `1` to `Yes`.
 
 | Is Fraudulent | Fraudulent Status|
 |--------------|-------------------|
 | 0            | No                |
 | 1            | Yes               |
 
-8. Add `Flagged Status` column: From `Was Flagged Fraudulent`, convert `0` to `No` and `1` to `Yes`.
+7. Add `Flagged Status` column: From `Was Flagged Fraudulent`, convert `0` to `No` and `1` to `Yes`.
 
 | Was Flagged Fraudulent | Flagged Status|
 |------------------------|---------------|
 | 0                      | No            |
 | 1                      | Yes           |
 
-9. Verified columns contain numeric values:
+8. Verified columns contain numeric values:
    - `Time Stamp`
    - `Amount`
    - `Origin Balance Before`
@@ -91,7 +84,7 @@ These columns only identify user accounts and don’t provide useful information
    - `Is Fraudulent`
    - `Was Flagged Fraudulent`
 
-10. **Removed Underscores in Transaction Types**
+9. **Removed Underscores in Transaction Types**
 
 | Transaction Type Column    | New Transaction Type Column |
 |----------------------------|-----------------------------|
@@ -106,20 +99,23 @@ These columns only identify user accounts and don’t provide useful information
   - `TRANSFER`: 0.0006
   - `CASH OUT`: 0.0005
   - Total Fraud Occurrence: 0.0011
-- Fraud rate by count is less than 1%, but the fraud amounts are large. 
-- Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
-- Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
+- Fraud rate by count is less than 1%, but the fraud amounts are large.
 
 ## Key Business Insights
-- Fraud is highly targeted. Fraud only occurred in `TRANSFER` and `CASH OUT` transaction types.
-- Since `TRANSFER` and `CASH OUT` contain fraudulent activity, they may occur together in fraudulent schemes.
-- `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
-- Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
+**Transfer and Cash Out Transaction Types**
+  - Fraud is highly targeted. Fraud only occurred in `TRANSFER` and `CASH OUT` transaction types.
+  - Since `TRANSFER` and `CASH OUT` contain fraudulent activity, they may occur together in fraudulent schemes.
+  - `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
+  - Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
  
-- `CASH IN`, `PAYMENT`, and `DEBT` had zero fraudulent transactions, but this could translate to false positives. 
+**Cash In, Payment, Debt transaction Types**
+  - `CASH IN`, `PAYMENT`, and `DEBT` had zero fraudulent transactions, but this could translate to false positives. 
+
+**Time-Based (Hourly) Fraudulent Activity**
+  - Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
+  - Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
 
 ## Summary of Recommendations Based on Findings
-
 **Fraud Surveillance Across Transaction Types**
 - Focus fraud detection on `TRANSFER` and `CASH OUT` transaction types.
 - Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBT` transaction types.
