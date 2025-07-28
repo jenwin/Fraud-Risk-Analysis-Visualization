@@ -103,6 +103,8 @@ These columns only identify user accounts and don’t provide useful information
   - Total Fraud Occurrence: 0.0011
 - Fraud rate by count is less than 1%, but the fraud amounts are large.
 
+![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
+
 ## Key Business Insights
 **Transfer and Cash Out Transaction Types**
   - Fraud is highly targeted. Fraud only occurred in `TRANSFER` and `CASH OUT` transaction types.
