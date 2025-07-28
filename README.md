@@ -25,6 +25,8 @@ Understanding the factors behind fraudulent transactions allows financial instit
 | `isFraud`          | Indicates if the transaction is fraudulent (1) or not fraudulent (0)                            |
 | `isFlaggedFraud`   | Indicates if the transaction was flagged as fraudulent (1) or not fraudulent (0) by the system  |
 
+Important Note: Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
+
 ## Approach
 
 ### Tools & Technologies Used
@@ -94,6 +96,7 @@ These columns only identify user accounts and don’t provide useful information
 | CASH_IN                    | CASH IN                     |
 
 ## Results
+
 - `TRANSFER` transaction type had the highest amount of fraud — $681,598,379.85 million.
 - `CASH OUT` transaction type was the next runner-up — $680,383,860.58 million.
 - `CASH IN`, `PAYMENT`, and `DEBT` had zero fraud.
@@ -104,12 +107,14 @@ These columns only identify user accounts and don’t provide useful information
 - Fraud rate by count is less than 1%, but the fraud amounts are large.
 
 - Simulated Fraud Detection System
+
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
 
-- The fraud detection rule identifies `61.65%` of fraudulent cases but also flags a large number of legitimate transactions.
-- Approximately `27.02%` of all transactions are flagged, with the majority being false positives, which may result in unnecessary reviews of non-fraudulent transactions.
+  - The fraud detection rule identifies `61.65%` of fraudulent cases but also flags a large number of legitimate transactions.
+  - Approximately `27.02%` of all transactions are flagged, with the majority being false positives, which may result in unnecessary reviews of non-fraudulent transactions.
 
 ## Key Business Insights
+
 **Transfer and Cash Out Transaction Types**
   - Fraud is highly targeted. Fraud only occurred in `TRANSFER` and `CASH OUT` transaction types.
   - Since `TRANSFER` and `CASH OUT` contain fraudulent activity, they may occur together in fraudulent schemes.
@@ -130,6 +135,7 @@ These columns only identify user accounts and don’t provide useful information
   - The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
 
 ## Summary of Recommendations Based on Findings
+
 **Fraud Surveillance Across Transaction Types**
 - Focus fraud detection on `TRANSFER` and `CASH OUT` transaction types.
 - Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBT` transaction types.
@@ -153,7 +159,7 @@ These columns only identify user accounts and don’t provide useful information
   - Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
   - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
 
-**Improve the Fraud Detection System**
+**Improve Fraud Detection System**
   - Combine multiple features (machine learning, statistical models) to increase accuracy and reduce false positives. Examples:
     - Transaction type, timing, and frequency
     - Account activity and historical behavior
