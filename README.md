@@ -103,7 +103,11 @@ These columns only identify user accounts and don’t provide useful information
   - Total Fraud Occurrence: 0.0011
 - Fraud rate by count is less than 1%, but the fraud amounts are large.
 
+- Simulated Fraud Detection System
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
+
+- The fraud detection rule identifies `61.65%` of fraudulent cases but also flags a large number of legitimate transactions.
+- Approximately `27.02%` of all transactions are flagged, with the majority being false positives, which may result in unnecessary reviews of non-fraudulent transactions.
 
 ## Key Business Insights
 **Transfer and Cash Out Transaction Types**
@@ -118,6 +122,12 @@ These columns only identify user accounts and don’t provide useful information
 **Time-Based (Hourly) Fraudulent Activity**
   - Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
   - Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
+
+**Fraud Detection System**
+  - The rule flags nearly `61.65%` of fraudulent transactions, demonstrating it can detect majority of fraud cases based on large transaction amounts.
+  - About `27.02%` of all transactions are flagged, but only a small fraction are actually fraudulent. High false alarm rates can overwhelm investigators and delay transactions, negatively affecting customer experience.
+  - Although the detection rate is high, `438` fraud cases go unnoticed, creating financial and reputational risks.
+  - The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
 
 ## Summary of Recommendations Based on Findings
 **Fraud Surveillance Across Transaction Types**
@@ -140,8 +150,17 @@ These columns only identify user accounts and don’t provide useful information
   - Watch for accounts that are quickly depleted right after receiving money.
 
 **Add Behavioral Modeling**
-   - Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
-   - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
+  - Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
+  - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
+
+**Improve the Fraud Detection System**
+  - Combine multiple features (machine learning, statistical models) to increase accuracy and reduce false positives. Examples:
+    - Transaction type, timing, and frequency
+    - Account activity and historical behavior
+    - Origin and destination patterns
+  - Establish varying risk levels, prioritizing transactions with higher risk.
+  - Continuously improve the fraud detection system by updating it based on feedback from confirmed fraud cases.
+  - Set up simple and fast procedures for flagged transactions to maintain customer satisfaction, including quick solutions and communication.
 
 ## How to Start Project with Python
 1. Clone or Download.
