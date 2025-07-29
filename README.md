@@ -25,7 +25,7 @@ Understanding the factors behind fraudulent transactions allows financial instit
 | `isFraud`          | Indicates if the transaction is fraudulent (1) or not fraudulent (0)                            |
 | `isFlaggedFraud`   | Indicates if the transaction was flagged as fraudulent (1) or not fraudulent (0) by the system  |
 
-Important Note: Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
+**Important Note:** Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
 
 ## Approach
 
@@ -56,7 +56,7 @@ Important Note: Transactions identified as fraudulent are cancelled in this data
 
 3. Checked that all values in the Transaction Type column are in uppercase.
 
-4. Dropped columns: 
+4. Dropped account ID columns: 
    - `Origin Account`
    - `Destination Account`
   
@@ -78,7 +78,7 @@ These columns only identify user accounts and don’t provide useful information
 | 0                      | No            |
 | 1                      | Yes           |
 
-8. Verified columns contain numeric values:
+8. **Verified columns contain numeric values:**
    - `Time Stamp`
    - `Amount`
    - `Origin Balance Before`
@@ -95,6 +95,14 @@ These columns only identify user accounts and don’t provide useful information
 | CASH_OUT                   | CASH OUT                    |
 | CASH_IN                    | CASH IN                     |
 
+10. **Dropped all balance columns:**
+   - `Origin Balance Before`
+   - `Origin Balance After`
+   - `Destination Balance Before`
+   - `Destination Balance After`
+
+Fraudulent transactions are canceled, so the balance columns show account states after cancellation. These columns were not used for fraud detection.
+
 ## Results
 
 - `TRANSFER` transaction type had the highest amount of fraud — $681,598,379.85 million.
@@ -106,12 +114,12 @@ These columns only identify user accounts and don’t provide useful information
   - Total Fraud Occurrence: 0.0011
 - Fraud rate by count is less than 1%, but the fraud amounts are large.
 
-- Simulated Fraud Detection System
+**Simulated Fraud Detection System**
 
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
 
-  - The fraud detection rule identifies `61.65%` of fraudulent cases but also flags a large number of legitimate transactions.
-  - Approximately `27.02%` of all transactions are flagged, with the majority being false positives, which may result in unnecessary reviews of non-fraudulent transactions.
+  - The fraud detection rule identifies `62%` of fraudulent cases but also flags a large number of legitimate transactions.
+  - Approximately `27%` of all transactions are flagged, with the majority being false positives, which may result in unnecessary reviews of non-fraudulent transactions.
 
 ## Key Business Insights
 
@@ -129,8 +137,8 @@ These columns only identify user accounts and don’t provide useful information
   - Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
 
 **Fraud Detection System**
-  - The rule flags nearly `61.65%` of fraudulent transactions, demonstrating it can detect majority of fraud cases based on large transaction amounts.
-  - About `27.02%` of all transactions are flagged, but only a small fraction are actually fraudulent. High false alarm rates can overwhelm investigators and delay transactions, negatively affecting customer experience.
+  - The rule flags nearly `62%` of fraudulent transactions, demonstrating it can detect majority of fraud cases based on large transaction amounts.
+  - About `27%` of all transactions are flagged, but only a small fraction are actually fraudulent. High false alarm rates can overwhelm investigators and delay transactions, negatively affecting customer experience.
   - Although the detection rate is high, `438` fraud cases go unnoticed, creating financial and reputational risks.
   - The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
 
