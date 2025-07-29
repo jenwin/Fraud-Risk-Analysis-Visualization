@@ -67,21 +67,7 @@ These columns only identify user accounts and don’t provide useful information
 
 5. Checked for any negative and zero values in `Amount` column.
 
-6. Add `Fraudulent Status` column: From `Is Fraudulent`, convert `0` to `No` and `1` to `Yes`.
-
-| Is Fraudulent | Fraudulent Status|
-|--------------|-------------------|
-| 0            | No                |
-| 1            | Yes               |
-
-7. Add `Flagged Status` column: From `Was Flagged Fraudulent`, convert `0` to `No` and `1` to `Yes`.
-
-| Was Flagged Fraudulent | Flagged Status|
-|------------------------|---------------|
-| 0                      | No            |
-| 1                      | Yes           |
-
-8. **Verified columns contain numeric values:**
+6. **Verified columns contain numeric values:**
    - `Time Stamp`
    - `Amount`
    - `Origin Balance Before`
@@ -91,20 +77,25 @@ These columns only identify user accounts and don’t provide useful information
    - `Is Fraudulent`
    - `Was Flagged Fraudulent`
 
-9. **Removed Underscores in Transaction Types**
+7. **Removed Underscores in Transaction Types**
 
 | Transaction Type Column    | New Transaction Type Column |
 |----------------------------|-----------------------------|
 | CASH_OUT                   | CASH OUT                    |
 | CASH_IN                    | CASH IN                     |
 
-10. **Dropped all balance columns:**
+8. **Dropped all balance columns:**
    - `Origin Balance Before`
    - `Origin Balance After`
    - `Destination Balance Before`
    - `Destination Balance After`
 
 Fraudulent transactions are canceled, so the balance columns show account states after cancellation. These columns were not used for fraud detection.
+
+9. **Dropped remaining column**
+  - `Was Flagged Fraudulent`
+
+Column removed due to the business rule flagging transfer transactions over $200,000.
 
 ## Results
 
