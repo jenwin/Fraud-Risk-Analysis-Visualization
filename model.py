@@ -9,7 +9,7 @@ df = pd.read_csv(dataset_url)
 # Clean column names
 df.columns = df.columns.str.strip()
 
-# Create a new column to simulate fraud flagging based on Amount
+# Create a new column to simulate fraud flagging based on Amount (> $200,000)
 df['SimulatedFlagged'] = (df['Amount'] > 200000).astype(int)
 
 # Total transactions
@@ -34,14 +34,18 @@ true_negatives = df[(df['Is Fraudulent'] == 0) & (df['SimulatedFlagged'] == 0)].
 flagging_rate = (flagged_transactions / total_transactions) * 100 if total_transactions else 0
 detection_rate = (true_positives / actual_frauds) * 100 if actual_frauds else 0
 
+# Round the rates to two decimal places
+flagging_rate_percent = round(flagging_rate)
+detection_rate_percent = round(detection_rate)
+
 # Print the summary
 print("Fraud Flagging Performance Summary:")
 print(f"Total Transactions: {total_transactions}")
 print(f"Actual Fraudulent Transactions: {actual_frauds}")
 print(f"Flagged Transactions (Simulated): {flagged_transactions}")
 print(f"Correctly Flagged Frauds (True Positives): {true_positives}")
-print(f"Overall Flagging Rate (% of all transactions): {flagging_rate:.2f}")
-print(f"Fraud Detection Rate (% of actual frauds caught): {detection_rate:.2f}")
+print(f"Overall Flagging Rate: {flagging_rate:.0f}%")
+print(f"Fraud Detection Rate: {detection_rate:.0f}%")
 
 # Print confusion matrix components
 print("\nConfusion Matrix Components:")
