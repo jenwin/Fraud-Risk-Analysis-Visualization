@@ -25,7 +25,10 @@ Understanding the factors behind fraudulent transactions allows financial instit
 | `isFraud`          | Indicates if the transaction is fraudulent (1) or not fraudulent (0)                            |
 | `isFlaggedFraud`   | Indicates if the transaction was flagged as fraudulent (1) or not fraudulent (0) by the system  |
 
-**Important Note:** Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
+**Important Note:** 
+   - Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
+
+   - `TRANSFER` transaction types over $200,000 are flagged as fraudulent. This rule is designed to catch unusually large transfers that may indicate fraudulent activity.
 
 ## Approach
 
