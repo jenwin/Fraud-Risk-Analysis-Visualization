@@ -85,6 +85,7 @@ These columns only identify user accounts and don’t provide useful information
 | CASH_IN                    | CASH IN                     |
 
 8. **Dropped all balance columns:**
+
    - `Origin Balance Before`
    - `Origin Balance After`
    - `Destination Balance Before`
@@ -92,8 +93,8 @@ These columns only identify user accounts and don’t provide useful information
 
 Fraudulent transactions are canceled, so the balance columns show account states after cancellation. These columns were not used for fraud detection.
 
-9. **Dropped remaining column**
-  - `Was Flagged Fraudulent`
+9. **Dropped remaining column:**
+   - `Was Flagged Fraudulent`
 
 Column removed due to the business rule flagging transfer transactions over $200,000.
 
@@ -109,14 +110,11 @@ Column removed due to the business rule flagging transfer transactions over $200
 
 ## Results
 
-- `TRANSFER` transaction type had the highest amount of fraud — $681,598,379.85 million.
-- `CASH OUT` transaction type was the next runner-up — $680,383,860.58 million.
+- `TRANSFER` transaction type had the highest amount of fraud — `$681,598,379.85 million`.
+- `CASH OUT` transaction type was the next runner-up — `$680,383,860.58 million`.
 - `CASH IN`, `PAYMENT`, and `DEBT` had zero fraud.
-- Fraud Rate per Transaction Type / Total Transaction Count:
-  - `TRANSFER`: 0.0006
-  - `CASH OUT`: 0.0005
-  - Total Fraud Occurrence: 0.0011
-- Fraud rate by count is less than 1%, but the fraud amounts are large.
+- Total fraud cases by transaction type: `0.11%`
+- Total fraud cases by transaction type is <1%, but the fraud amounts are large.
 
 **Simulated Fraud Detection System**
 
