@@ -97,6 +97,16 @@ Fraudulent transactions are canceled, so the balance columns show account states
 
 Column removed due to the business rule flagging transfer transactions over $200,000.
 
+## Final Dataset Sample 
+
+| Time Step (Hour) | Transaction Type | Amount   | Is Fraudulent |
+|------------------|------------------|----------|---------------|
+| 1                | PAYMENT          | 1000.00  | 0             |
+| 1                | TRANSFER         | 2000.00  | 1             |
+| 1                | CASH IN          | 3000.00  | 0             |
+| 1                | CASH OUT         | 4000.00  | 1             |
+| 1                | DEBIT            | 5000.00  | 0             |
+
 ## Results
 
 - `TRANSFER` transaction type had the highest amount of fraud — $681,598,379.85 million.
