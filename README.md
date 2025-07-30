@@ -104,13 +104,13 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 
 ## Final Dataset Sample 
 
-| Time Step (Hour) | Transaction Type | Amount   | Is Fraudulent |
-|------------------|------------------|----------|---------------|
-| 1                | PAYMENT          | 1000.00  | 0             |
-| 1                | TRANSFER         | 2000.00  | 1             |
-| 1                | CASH IN          | 3000.00  | 0             |
-| 1                | CASH OUT         | 4000.00  | 1             |
-| 1                | DEBIT            | 5000.00  | 0             |
+| Time Step (Hour) | Transaction Type | Amount    | Is Fraudulent | Flagged    |
+|------------------|------------------|-----------|---------------|------------|
+| 1                | PAYMENT          | 1000.00   | 0             | No         |
+| 1                | TRANSFER         | 250000.00 | 1             | Yes        |
+| 1                | CASH IN          | 3000.00   | 0             | No         |
+| 1                | CASH OUT         | 4000.00   | 1             | No         |
+| 1                | DEBIT            | 5000.00   | 0             | No         |
 
 ## Results
 
