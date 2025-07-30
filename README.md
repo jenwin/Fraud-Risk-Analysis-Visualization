@@ -120,31 +120,33 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 - Total fraud cases by transaction type: `0.11%`
 - Total fraud cases by transaction type is <1%, but the fraud amounts are large.
 
-**Simulated Fraud Detection System**
+**Simulated Fraud Detection System with Business Rule**
 
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
 
-  - The fraud detection rule identifies `31%` of fraudulent cases but also flags a large number of legitimate transactions.
-  - Approximately `6%` of all transactions are flagged, with the majority being legitimate transactions and false alarms, which may result in unnecessary reviews of non-fraudulent transactions.
+  - The business rule flagged `31%` of cases as fraudulent. 
+  - It also flagged a large number of legitimate transactions and missed frauds. This may result in unnecessary reviews of non-fraudulent transactions. 
+  - There were no false alarms due to the business rule being strict.
 
 ## Key Business Insights
 
 **Transfer Transactions and Detection**
   - Only `TRANSFER` transactions are subject to flagging. Fraud was detected exclusively within `TRANSFER` transactions where amounts exceed $200,000.
+  - `CASH OUT` had fraudulent cases, but some were not detected. These are considered missed frauds.
   - `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
   - Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
  
 **Cash In, Payment, Debt Transaction Types**
-  - `CASH IN`, `PAYMENT`, and `DEBT` had zero fraudulent transactions, but this could translate to false positives. 
+  - `CASH IN`, `PAYMENT`, and `DEBIT` had zero fraudulent transactions.
 
 **Time-Based (Hourly) Fraudulent Activity**
   - Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
   - Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
 
 **Fraud Detection System**
-  - The rule detects nearly `62%` of fraudulent transactions, demonstrating it can identify majority of fraud cases based on large transaction amounts.
-  - About `27%` of all transactions are flagged, but only a small fraction are actually fraudulent. High false alarms and legitimate transactions can overwhelm investigators and cause delays, negatively affecting customer experience.
-  - Although the detection rate is high, `438` fraud cases go unnoticed, creating financial and reputational risks.
+  - The fraud detection system flagged `31%` of fraudulent transactions, demonstrating some ability to identify fraud when a business rule is applied.
+  - While the business rule detected only `31%` of fraudulent transactions, it was still effective in identifying fraud cases. Additionally, minimizing false alarms helps ease the workload on investigators, prevent delays, and protects the customer experience.
+  - `792` fraud cases went unnoticed, creating financial and reputational risks.
   - The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
 
 ## Summary of Recommendations Based on Findings
@@ -156,7 +158,7 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 **Enhance Real-Time Rules for Suspicious Behavior/Patterns**
   - Implement flags across scenarios: 
     - When funds are transferred and cashed out immediately.
-    - Large values over $50,000 should be flagged.
+    - Flag transactions that fall within certain value ranges.
 
 **Observe Event Timing and Frequency**
   - Limit the number of transfers and cash outs per account within a day or hourly to detect unusual activity.
