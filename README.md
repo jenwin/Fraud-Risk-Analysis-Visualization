@@ -116,7 +116,7 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 
 - `TRANSFER` transaction type had the highest amount of fraud — `$681,598,379.85 million`.
 - `CASH OUT` transaction type was the next runner-up — `$680,383,860.58 million`.
-- `CASH IN`, `PAYMENT`, and `DEBT` had zero fraud.
+- `CASH IN`, `PAYMENT`, and `DEBIT` had zero fraud.
 - Total fraud cases by transaction type: `0.11%`
 - Total fraud cases by transaction type is <1%, but the fraud amounts are large.
 
@@ -153,7 +153,7 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 
 **Fraud Surveillance Across Transaction Types**
 - Focus fraud detection on `TRANSFER` and `CASH OUT` transaction types.
-- Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBT` transaction types.
+- Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBIT` transaction types.
   
 **Enhance Real-Time Rules for Suspicious Behavior/Patterns**
   - Implement flags across scenarios: 
@@ -182,10 +182,6 @@ This column sets the business rule: Transfer accounts with an amount greater tha
   - Establish varying risk levels, prioritizing transactions with higher risk.
   - Continuously improve the fraud detection system by updating it based on feedback from confirmed fraud cases.
   - Set up simple and fast procedures for flagged transactions to maintain customer satisfaction, including quick solutions and communication.
-
-## How to Start Project with Python
-1. Clone or Download.
-2. Run  `python model.py` from the root directory.
 
 ## Author
 Jennifer Nguyen
