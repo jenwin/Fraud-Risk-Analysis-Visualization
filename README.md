@@ -25,7 +25,9 @@ Understanding the factors behind fraudulent transactions allows financial instit
 | `isFraud`          | Indicates if the transaction is fraudulent (1) or not fraudulent (0)                            |
 | `isFlaggedFraud`   | Indicates if the transaction was flagged as fraudulent (1) or not fraudulent (0) by the system  |
 
-**Important Note:** 
+This project uses the [PaySim1 dataset](https://www.kaggle.com/datasets/ealaxi/paysim1).
+
+**Important Notes:** 
    - Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
 
    - `TRANSFER` transaction types over $200,000 are flagged as fraudulent. This business rule is designed to catch unusually large transfers that may indicate fraudulent activity.
@@ -94,6 +96,7 @@ These columns only identify user accounts and don’t provide useful information
 Fraudulent transactions are canceled, so the balance columns show account states after cancellation. These columns were not used for fraud detection.
 
 9. **Dropped remaining column:**
+
    - `Was Flagged Fraudulent`
 
 Column removed due to the business rule flagging transfer transactions over $200,000.
@@ -175,7 +178,7 @@ This column sets the business rule: Transfer accounts with an amount greater tha
   - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
 
 **Improve Fraud Detection System**
-  - Combine multiple features (machine learning, statistical models) to increase accuracy and reduce false positives. Examples:
+  - Combine multiple features (machine learning, statistical models) to increase accuracy to reduce missed frauds and false alarms. Examples:
     - Transaction type, timing, and frequency
     - Account activity and historical behavior
     - Origin and destination patterns
