@@ -98,6 +98,10 @@ Fraudulent transactions are canceled, so the balance columns show account states
 
 Column removed due to the business rule flagging transfer transactions over $200,000.
 
+10. **Add Flagged Column**
+
+This column sets the business rule: Transfer accounts with an amount greater than $200,000 and marked as fraudulent (Is Fraudulent = 1) are flagged as high risk.
+
 ## Final Dataset Sample 
 
 | Time Step (Hour) | Transaction Type | Amount   | Is Fraudulent |
@@ -120,14 +124,13 @@ Column removed due to the business rule flagging transfer transactions over $200
 
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
 
-  - The fraud detection rule identifies `62%` of fraudulent cases but also flags a large number of legitimate transactions.
-  - Approximately `27%` of all transactions are flagged, with the majority being false positives, which may result in unnecessary reviews of non-fraudulent transactions.
+  - The fraud detection rule identifies `31%` of fraudulent cases but also flags a large number of legitimate transactions.
+  - Approximately `6%` of all transactions are flagged, with the majority being legitimate transactions and false alarms, which may result in unnecessary reviews of non-fraudulent transactions.
 
 ## Key Business Insights
 
-**Transfer and Cash Out Transaction Types**
-  - Fraud is highly targeted. Fraud only occurred in `TRANSFER` and `CASH OUT` transaction types.
-  - Since `TRANSFER` and `CASH OUT` contain fraudulent activity, they may occur together in fraudulent schemes.
+**Transfer Transactions and Detection**
+  - Only `TRANSFER` transactions are subject to flagging. Fraud was detected exclusively within `TRANSFER` transactions where amounts exceed $200,000.
   - `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
   - Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
  
@@ -139,8 +142,8 @@ Column removed due to the business rule flagging transfer transactions over $200
   - Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
 
 **Fraud Detection System**
-  - The rule flags nearly `62%` of fraudulent transactions, demonstrating it can detect majority of fraud cases based on large transaction amounts.
-  - About `27%` of all transactions are flagged, but only a small fraction are actually fraudulent. High false alarm rates can overwhelm investigators and delay transactions, negatively affecting customer experience.
+  - The rule detects nearly `62%` of fraudulent transactions, demonstrating it can identify majority of fraud cases based on large transaction amounts.
+  - About `27%` of all transactions are flagged, but only a small fraction are actually fraudulent. High false alarms and legitimate transactions can overwhelm investigators and cause delays, negatively affecting customer experience.
   - Although the detection rate is high, `438` fraud cases go unnoticed, creating financial and reputational risks.
   - The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
 
