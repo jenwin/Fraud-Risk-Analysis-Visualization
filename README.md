@@ -28,7 +28,7 @@ Understanding the factors behind fraudulent transactions allows financial instit
 **Important Note:** 
    - Transactions identified as fraudulent are cancelled in this dataset. This means the balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) do not reflect actual account changes for fraudulent transactions.
 
-   - `TRANSFER` transaction types over $200,000 are flagged as fraudulent. This rule is designed to catch unusually large transfers that may indicate fraudulent activity.
+   - `TRANSFER` transaction types over $200,000 are flagged as fraudulent. This business rule is designed to catch unusually large transfers that may indicate fraudulent activity.
 
 ## Approach
 
@@ -125,7 +125,7 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
 
   - The business rule flagged `31%` of cases as fraudulent. 
-  - It also flagged a large number of legitimate transactions and missed frauds. This may result in unnecessary reviews of non-fraudulent transactions. 
+  - An issue was that the business rule caused some fraudulent transactions to go undetected.
   - There were no false alarms due to the business rule being strict.
 
 ## Key Business Insights
