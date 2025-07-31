@@ -11,7 +11,7 @@ Understanding the factors behind fraudulent transactions allows financial instit
 
 ## The Dataset
 
-| Attribute          | Description                                                                                     |
+| Column             | Description                                                                                     |
 |--------------------|-------------------------------------------------------------------------------------------------|
 | `step`             | Time step of the transaction. Each step represents an hour.                                     |
 | `type`             | Type of transaction: PAYMENT, CASH_OUT, TRANSFER, DEBIT                                         |
