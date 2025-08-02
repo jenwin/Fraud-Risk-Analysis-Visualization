@@ -130,7 +130,7 @@ Data visualization: Exploring key factors behind fraudulent transactions.
 - Total fraud cases by transaction type: `0.11%`
 - Total fraud cases by transaction type is <1%, but the fraud amounts are large.
 
-**Simulated Fraud Detection System with Business Rule**
+### Simulated Fraud Detection System with Business Rule
 
 ![Fraud Detection Summary](Visuals/fraud_detection_analysis.png)
 
@@ -141,57 +141,57 @@ Data visualization: Exploring key factors behind fraudulent transactions.
 ## Key Business Insights
 
 **Transfer Transactions and Detection**
-  - Only `TRANSFER` transactions are subject to flagging. Fraud was detected exclusively within `TRANSFER` transactions where amounts exceed $200,000.
-  - `CASH OUT` had fraudulent cases, but some were not detected. These are considered missed frauds.
-  - `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
-  - Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
+1. Only `TRANSFER` transactions are subject to flagging. Fraud was detected exclusively within `TRANSFER` transactions where amounts exceed $200,000.
+2. `CASH OUT` had fraudulent cases, but some were not detected. These are considered missed frauds.
+3. `TRANSFER` and `CASH OUT` are high risk concentration zones even though they make up a small percentage of transactions.
+4. Fraud transactions are not frequent. When they occur, they often involve very large amounts with high bursts of high-value transaction attempts.
  
 **Cash In, Payment, Debt Transaction Types**
-  - `CASH IN`, `PAYMENT`, and `DEBIT` had zero fraudulent transactions.
+1. `CASH IN`, `PAYMENT`, and `DEBIT` had zero fraudulent transactions.
 
 **Time-Based (Hourly) Fraudulent Activity**
-  - Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
-  - Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
+1. Fraud spikes tend to happen unpredictably, indicating coordinated activity rather than random occurrences.
+2. Fraud is not evenly distributed over time. Certain hours have heavier fraud activity.
 
 **Fraud Detection System**
-  - The fraud detection system flagged `31%` of fraudulent transactions, demonstrating some ability to identify fraud when a business rule is applied.
-  - While the business rule detected only `31%` of fraudulent transactions, it was still effective in identifying fraud cases. Additionally, minimizing false alarms helps ease the workload on investigators, prevent delays, and protects the customer experience.
-  - `792` fraud cases went unnoticed, creating financial and reputational risks.
-  - The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
+1. The fraud detection system flagged `31%` of fraudulent transactions, demonstrating some ability to identify fraud when a business rule is applied.
+2. While the business rule detected only `31%` of fraudulent transactions, it was still effective in identifying fraud cases. Additionally, minimizing false alarms helps ease the workload on investigators, prevent delays, and protects the customer experience.
+3. `792` fraud cases went unnoticed, creating financial and reputational risks.
+4. The current method relies solely on a transaction amount threshold, which doesn’t effectively capture complex fraud patterns or smaller fraudulent transactions.
 
 ## Summary of Recommendations Based on Findings
 
 **Fraud Surveillance Across Transaction Types**
-- Focus fraud detection on `TRANSFER` and `CASH OUT` transaction types.
-- Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBIT` transaction types.
+1. Focus fraud detection on `TRANSFER` and `CASH OUT` transaction types.
+2. Maintain fraud checks for `CASH IN`, `PAYMENT`, and `DEBIT` transaction types.
   
 **Enhance Real-Time Rules for Suspicious Behavior/Patterns**
-  - Implement flags across scenarios: 
-    - When funds are transferred and cashed out immediately.
-    - Flag transactions that fall within certain value ranges.
+1. Implement flags across scenarios: 
+   - When funds are transferred and cashed out immediately.
+   - Flag transactions that fall within certain value ranges.
 
 **Observe Event Timing and Frequency**
-  - Limit the number of transfers and cash outs per account within a day or hourly to detect unusual activity.
-  - Lock accounts when time-based bursts are detected.
-  - Utilize dashboards to monitor hourly fluctuations in transaction activities for both fraudulent and non-fraudulent transactions.
-  - A sudden rise in fraud amounts can be an early sign of a new scam starting.
+1. Limit the number of transfers and cash outs per account within a day or hourly to detect unusual activity.
+2. Lock accounts when time-based bursts are detected.
+3. Utilize dashboards to monitor hourly fluctuations in transaction activities for both fraudulent and non-fraudulent transactions.
+4. A sudden rise in fraud amounts can be an early sign of a new scam starting.
 
 **Monitor Account Balance Changes**
-  - Watch for patterns where funds are transferred from empty accounts.
-  - Watch for accounts that are quickly depleted right after receiving money.
+1. Watch for patterns where funds are transferred from empty accounts.
+2. Watch for accounts that are quickly depleted right after receiving money.
 
 **Add Behavioral Modeling**
-  - Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
-  - Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
+1. Train fraud detection models on `TRANSFER` and `CASH OUT` transaction types.
+2. Add and enforce verification steps for `TRANSFER` and `CASH OUT` transaction types for new accounts or shortly after transfers.
 
 **Improve Fraud Detection System**
-  - Combine multiple features (machine learning, statistical models) to increase accuracy to reduce missed frauds and false alarms. Examples:
-    - Transaction type, timing, and frequency
-    - Account activity and historical behavior
-    - Origin and destination patterns
-  - Establish varying risk levels, prioritizing transactions with higher risk.
-  - Continuously improve the fraud detection system by updating it based on feedback from confirmed fraud cases.
-  - Set up simple and fast procedures for flagged transactions to maintain customer satisfaction, including quick solutions and communication.
+1. Combine multiple features (machine learning, statistical models) to increase accuracy to reduce missed frauds and false alarms. Examples:
+   - Transaction type, timing, and frequency
+   - Account activity and historical behavior
+   - Origin and destination patterns
+2. Establish varying risk levels, prioritizing transactions with higher risk.
+3. Continuously improve the fraud detection system by updating it based on feedback from confirmed fraud cases.
+4. Set up simple and fast procedures for flagged transactions to maintain customer satisfaction, including quick solutions and communication.
 
 ## Author
 Jennifer Nguyen

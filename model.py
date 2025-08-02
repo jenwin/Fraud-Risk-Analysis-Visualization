@@ -49,7 +49,7 @@ print("Fraud Flagging Performance Summary:")
 print(f"Total Transactions: {total_transactions}")
 print(f"Correctly Flagged Frauds: {true_positives}")
 print(f"Transfer Fraud Rate: {transfer_fraud_total_percent:.2f}%")
-print(f"Cash out Fraud Rate: {cash_out_fraud_total_percent:.2f}%")
+print(f"Cash Out Fraud Rate: {cash_out_fraud_total_percent:.2f}%")
 print(f"Total Fraud Rate: {sum_transfer_cash_out_fraud_percent:.2f}%")
 print(f"Flagging (Detection) Rate: {flagging_rate_percent:.0f}%")
 
