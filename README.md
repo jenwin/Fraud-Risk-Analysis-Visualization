@@ -117,6 +117,13 @@ This column sets the business rule: Transfer accounts with an amount greater tha
 
 ## Results
 
+### Power BI Dashboard and Visual Insights
+
+Data visualization: Exploring key factors behind fraudulent transactions.
+
+[![Dashboard](./Visuals/financial_dashboard.png)](./Visuals/financial_dashboard.pdf)  
+*Click the image to see the full version.*
+
 - `TRANSFER` transaction type had the highest amount of fraud — `$681,598,379.85 million`.
 - `CASH OUT` transaction type was the next runner-up — `$680,383,860.58 million`.
 - `CASH IN`, `PAYMENT`, and `DEBIT` had zero fraud.
