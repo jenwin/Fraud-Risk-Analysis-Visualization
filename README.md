@@ -1,4 +1,7 @@
 # Fraud Risk Analysis & Visualization
+This project analyzes patterns behind fraudulent financial transactions to help detect and prevent fraud. 
+
+Power BI is used to visualize transaction data and present the system’s results in an interactive dashboard.
 
 ## Business Problem
 How can a financial institution accurately detect fraudulent transactions in real-time to minimize financial losses and protect customers?
